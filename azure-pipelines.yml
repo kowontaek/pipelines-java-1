@@ -23,9 +23,24 @@ steps:
 - task: Ant@1
   inputs:
     buildFile: 'build.xml'
+- task: AzureCLI@2
+  inputs:
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'echo "hello"'
     options: 
     targets: 'test'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     testRunTitle: 'test'
     javaHomeOption: 'JDKVersion'
+- task: Gradle@3
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    workingDirectory: '/'
+    tasks: 'build'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
