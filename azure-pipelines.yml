@@ -16,6 +16,7 @@ steps:
     javaHomeOption: 'Path'
     jdkDirectory: '/mnt/d/Devs/javas/jdk1.8.0_202-lnx/bin/java'
     jdkArchitectureOption: 'x64'
+    options: '-DskipTests'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
