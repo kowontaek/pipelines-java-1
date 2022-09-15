@@ -15,7 +15,7 @@ steps:
     script: |
       env
       pwd
-      ls -al
+      mkdir test && cd test && echo test hello
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -26,3 +26,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      pwd
+      ls -al
+      cat ./hello
